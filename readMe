@@ -1,0 +1,32 @@
+
+##################################初始化sql 語句==================================
+DROP TABLE IF EXISTS `authorities`;
+create table authorities (username varchar(50) not null,authority varchar(50) not null,constraint fk_authorities_users foreign key(username) references users(username));
+create unique index ix_auth_username on authorities (username,authority);
+
+DROP TABLE IF EXISTS `group_members`;
+CREATE TABLE `group_members`  (
+  `group_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`group_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+SET FOREIGN_KEY_CHECKS = 1;
+
+DROP TABLE IF EXISTS `group_authorities`;
+CREATE TABLE `group_authorities`  (
+  `group_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `authority` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`group_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+SET FOREIGN_KEY_CHECKS = 1;
+
+DROP TABLE IF EXISTS `authorities`;
+CREATE TABLE `authorities`  (
+  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `authority` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  UNIQUE INDEX `ix_auth_username`(`username`, `authority`) USING BTREE,
+  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+SET FOREIGN_KEY_CHECKS = 1;
+create table users(username varchar(50) not null primary key,password varchar(500) not null,enabled boolean not null);
