@@ -20,6 +20,14 @@ public class WordsEntity {
      * age 年龄
      */
     private int age;
+    /**
+     *创建人
+     */
+    private String createBy;
+    /**
+     * 流程id
+     */
+    private  String proccessId;
 
     public String getId() {
         return id;
@@ -51,5 +59,21 @@ public class WordsEntity {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getProccessId() {
+        return proccessId;
+    }
+
+    public void setProccessId(String proccessId) {
+        this.proccessId = proccessId;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
     }
 }

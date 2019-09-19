@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="UTF-8">
+    <title>列表页面</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        th{
+               text-align: center;
+        }
+        td{
+             text-align: center
+        }
+        .modal-body form{
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function  saveFunction(){
+            var json ={};
+            json.name=$("#name").val();
+            json.sex=$("#sex").val();
+            json.age=$("#age").val();
+            var jsonStr = JSON.stringify(json);
+            // $.post({
+            //     url:"http://127.0.0.1:9100/insert",
+            //     data:JSON.stringify(jsonStr),
+            //     dataType:'JSONP',  // 处理Ajax跨域问题
+            //     contentType:"application/json",
+            //     success:function (response) {
+            //         $("#myModal").hide();
+            //         alert(response);
+            //     }
+            // })
+            $.post("/insert", json,
+                function(data){
+                    alert("Data Loaded: " + data);
+                });
+
+        }
+    </script>
+</head>
+<body>
+
+     <p>[[${userName}]]登录进来了</p>
+        <button class="btn btn-info form-control" style="width: 70px;" data-toggle="modal" data-target="#myModal">添加</button>
+        <table class="table-bordered" >
+            <thead>
+                     <th width="150px">姓名</th>
+                     <th width="75px">性别</th>
+                     <th width="150px">年龄</th>
+                     <th width="150px">所属流程</th>
+                     <th width="150px">创建者</th>
+                     <th width="150px">状态</th>
+                     <th width="350px">按钮</th>
+            </thead>
+            <tbody>
+            <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td><a href="#">删除</a>     <a href="#">查看</a>   <a href="#">首迎送审</a>    <a href="#">修改送审</a></td></tr>
+            </tbody>
+        </table>
+         <!-- 模态框（Modal） -->
+         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                         <h4 class="modal-title" id="myModalLabel">添加人员</h4>
+                     </div>
+                     <div class="modal-body">
+
+                         <form id="addForm" class="form-horizontal">
+                             <fieldset>
+                                 <div class="control-group">
+
+                                     <!-- Text input-->
+                                     <label class="control-label" for="input01">姓名</label>
+                                     <div class="controls">
+                                         <input type="text" placeholder="请输入姓名" class="input-xlarge" id="name">
+                                         <p class="help-block">Supporting help text</p>
+                                     </div>
+                                 </div>
+
+
+
+                                 <div class="control-group">
+
+                                     <!-- Text input-->
+                                     <label class="control-label" for="input01">年龄</label>
+                                     <div class="controls">
+                                         <input type="text" placeholder="placeholder" class="input-xlarge" id="age">
+                                         <p class="help-block">Supporting help text</p>
+                                     </div>
+                                 </div>
+
+                                 <div class="control-group">
+
+                                     <!-- Text input-->
+                                     <label class="control-label" for="input01">性别</label>
+                                     <div class="controls">
+                                         <input type="text" placeholder="placeholder" id="sex" class="input-xlarge">
+                                         <p class="help-block">Supporting help text</p>
+                                     </div>
+                                 </div>
+
+                             </fieldset>
+                         </form>
+
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                         <button type="button" class="btn btn-primary" onclick="saveFunction()">保存</button>
+                     </div>
+                 </div><!-- /.modal-content -->
+             </div><!-- /.modal -->
+         </div>
+</body>
+</html>

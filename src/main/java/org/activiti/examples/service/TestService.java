@@ -1,5 +1,6 @@
 package org.activiti.examples.service;
 
+import org.activiti.examples.entity.WordsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,19 @@ public class TestService {
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql, startIndex, endIndex);
         return maps;
     }
+
+
+    /**
+     * 插入 words 表
+     */
+    public boolean wordsInsertInto(WordsEntity wordsEntity){
+        String sql  = "insert into words(id,name,sex,age,createBy,proccessId) values(uuid(),?,?,?,?,?)";
+        int update = jdbcTemplate.update(sql, wordsEntity.getName(), wordsEntity.getSex(), wordsEntity.getAge(), wordsEntity.getCreateBy(), wordsEntity.getProccessId());
+        return update>0;
+    }
+
+
+
+
 
 }

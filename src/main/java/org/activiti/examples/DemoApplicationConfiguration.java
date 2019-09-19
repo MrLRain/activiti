@@ -31,6 +31,9 @@ public class DemoApplicationConfiguration {
         String[][] usersGroupsAndRoles = {
                 {"system", "123456", "ROLE_ACTIVITI_USER"},
                 {"admin", "123456", "ROLE_ACTIVITI_ADMIN"},
+                {"liuyu", "123456", "cgy"},
+                {"yunfei", "123456", "cgjl"},
+                {"cw", "123456", "cw"},
         };
         for (String[] user : usersGroupsAndRoles) {
             List<String> authoritiesStrings = Arrays.asList(Arrays.copyOfRange(user, 2, user.length));

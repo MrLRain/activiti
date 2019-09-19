@@ -15,9 +15,12 @@ import org.activiti.examples.start.StartListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,13 +46,17 @@ public class LoginController {
     /**
      * 获取分页信息
      */
-    @GetMapping("")
-    public Page<ProcessDefinition> login(){
+    @RequestMapping("")
+    public ModelAndView login(){
         try {
-            Pageable  pageable = Pageable.of(0, 10);
-            Page<ProcessDefinition> processInstancePage = processRuntime.processDefinitions(pageable);
-            System.out.println("processInstancePage = " + processInstancePage);
-            return null;
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.addObject("userName",userDetails.getUsername());
+            modelAndView.addObject("wordsList",userDetails.getUsername());
+            modelAndView.setViewName("index");
+            return modelAndView;
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,14 +7,14 @@ import org.activiti.api.process.runtime.ProcessRuntime;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.task.Task;
 import org.activiti.examples.SecurityUtil;
+import org.activiti.examples.entity.WordsEntity;
 import org.activiti.examples.service.TestService;
 import org.activiti.examples.util.EmailUtil;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.GeneralSecurityException;
 import java.util.*;
@@ -182,5 +182,12 @@ public class TestController {
         }
         taskService.complete(task.getId(), val);
     }
+
+
+    @PostMapping("/insert")
+    public boolean insert(@RequestBody WordsEntity wordsEntity){
+        return testService.wordsInsertInto(wordsEntity);
+    }
+
 
 }
