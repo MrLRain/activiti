@@ -97,4 +97,29 @@
             </bpmndi:BPMNShape>
         </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>
+    <bpmndi:BPMNDiagram>
+        <bpmndi:BPMNPlane>
+            <bpmndi:BPMNShape bpmnElement="Task_0snvh02">
+                <dc:Bounds height="48.0" width="120.0" x="366.1761840596474" y="105.04997769451086"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="ExclusiveGateway_0c36qc6">
+                <dc:Bounds height="48.0" width="48.0" x="297.1262063651366" y="210.0999553890217"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Task_1ylvdew">
+                <dc:Bounds height="48.0" width="120.0" x="112.56310318256831" y="210.09995538902172"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_1ogwwp9">
+                <dc:Bounds height="48.0" width="48.0" x="507.2261617541583" y="0.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="Task_1asxw87">
+                <dc:Bounds height="48.0" width="120.0" x="366.1761840596475" y="315.14993308353246"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent_13bsqqd">
+                <dc:Bounds height="48.0" width="48.0" x="507.2261617541583" y="420.1999107780432"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="StartEvent_12">
+                <dc:Bounds height="48.0" width="48.0" x="0.0" y="210.09995538902172"/>
+            </bpmndi:BPMNShape>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
 </bpmn:definitions>

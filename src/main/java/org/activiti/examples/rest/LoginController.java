@@ -30,7 +30,6 @@ import java.util.Random;
 public class LoginController {
     private Logger logger = LoggerFactory.getLogger(StartListener.class);
 
-    @Autowired
     private SecurityUtil securityUtil;
     private ProcessRuntime processRuntime;
     private TaskService taskService;
@@ -97,13 +96,13 @@ public class LoginController {
                 //获取任务id
                 String taskId = task.getId();
                 String taskName = task.getName();
-                if(taskName.equals("填写请假信息")){
+                if(taskName.equals("_3")){
                     //填写完之后，给下个审批人赋值
                     Map<String,Object> val=new HashMap<>();
                     val.put("reson","请假去探亲");
                     val.put("auditorId","TOM");
                     taskService.complete(taskId,val);
-                    System.out.println(task.getAssignee()+"已经提交申请.......");
+                    System.out.println(task.getAssignee()+"制药开始");
                 }
                 if(taskName.equals("审批")){
                     //进行审批
